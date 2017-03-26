@@ -1,9 +1,10 @@
 apply plugin: 'java'
-apply plugin: 'application'
-mainClassName = 'Tests1'
+
+
 repositories{
     mavenCentral()
 }
 dependencies {
     compile 'org.testng:testng:6.10'
+    compile 'org.seleniumhq.selenium:selenium-java:2.53.1'
 }
