@@ -30,7 +30,6 @@ public class ApplicationManager {
     }else  if (browser == BrowserType.DEFAULT){
       wd = new ChromeDriver();
     }else if (browser == BrowserType.INTERNET_EXPLORER){
-      //System.setProperty("webdriver.ie.driver", "C:\\drivers\\IEDriverServer.exe");
       wd = new InternetExplorerDriver();
     }
     wait = new WebDriverWait(wd, 10);
