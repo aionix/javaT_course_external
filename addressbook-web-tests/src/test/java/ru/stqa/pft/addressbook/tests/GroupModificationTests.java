@@ -11,9 +11,9 @@ public class GroupModificationTests extends TestBase {
   @Test
   void testGroupMidification(){
     app.getNavigationHelper().goToGroupsPage();
-    app.getGroupHelper().selectGroup();
+    app.getGroupHelper().selectFirstGroup();
     app.getGroupHelper().initGroupModification();
-    app.getGroupHelper().fillGroupForm(new GroupData("update_name", "header2", "footer2"));
+    app.getGroupHelper().fillGroupForm(new GroupData("group_name1", "header1", "footer1"));
     app.getGroupHelper().submitGroupModification();
   }
 }

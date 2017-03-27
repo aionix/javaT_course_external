@@ -10,10 +10,9 @@ public class GroupCreationTests extends TestBase {
 
   @Test
   void createGroup(){
-    app.getSessionHelper().Login("admin", "secret");
     app.getNavigationHelper().goToGroupsPage();
     app.getGroupHelper().initNewGroup();
-    app.getGroupHelper().fillGroupForm(new GroupData("group_name1", "header1", "footer1"));
+    app.getGroupHelper().fillGroupForm(new GroupData("group_name5", null, null));
     app.getGroupHelper().submitGroupCreation();
     app.getNavigationHelper().goToGroupsPage();
     app.getGroupHelper().getListOfGroups();
@@ -22,7 +21,6 @@ public class GroupCreationTests extends TestBase {
 
   @Test
   void getListOfGroups(){
-    app.getSessionHelper().Login();
     app.getNavigationHelper().goToGroupsPage();
     app.getGroupHelper().getListOfGroups();
   }

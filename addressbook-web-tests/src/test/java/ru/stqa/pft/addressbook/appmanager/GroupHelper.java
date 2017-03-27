@@ -51,10 +51,18 @@ public class GroupHelper extends HelperBase {
   public void deleteSelectedGroup() {
     click(By.cssSelector("#content>form>input:nth-of-type(2)"));
   }
+  public void deleteAllGroups(){
+    List<WebElement> groups;
+    groups = wd.findElements(By.className("group"));
+    for (WebElement el : groups){
+      el.findElement(By.name("selected[]")).click();
+      System.out.println(el.getText());
+    }
+  }
 
-  public void selectGroup() {
-   //click(By.cssSelector(".group>input[value='1']"));
-    click(By.name("selected[]"));
+  public void selectFirstGroup() {
+   click(By.xpath("*//span[1]"));
+   // click(By.name("selected[]"));
 }
 
   public void initGroupModification() {

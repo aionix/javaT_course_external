@@ -2,7 +2,11 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import sun.plugin2.util.BrowserType;
+
 
 /**
  * Created by Артем on 26.03.2017.
@@ -10,14 +14,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ApplicationManager {
   public WebDriver wd;
   public WebDriverWait wait;
-  //int Browser = BrowserType.INTERNET_EXPLORER;
+  private int browser;
   private GroupHelper groupHelper;
   private NavigationHelper navigationHelper;
   private SessionHelper sessionHelper;
 
+  public ApplicationManager(int browser) {
+    this.browser = browser;
+  }
+
   public void init() {
-    System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
-    wd = new ChromeDriver();
+    if (browser == BrowserType.MOZILLA){
+        System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver.exe");
+      wd = new FirefoxDriver();
+    }else  if (browser == BrowserType.DEFAULT){
+      wd = new ChromeDriver();
+    }else if (browser == BrowserType.INTERNET_EXPLORER){
+      //System.setProperty("webdriver.ie.driver", "C:\\drivers\\IEDriverServer.exe");
+      wd = new InternetExplorerDriver();
+    }
     wait = new WebDriverWait(wd, 10);
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);

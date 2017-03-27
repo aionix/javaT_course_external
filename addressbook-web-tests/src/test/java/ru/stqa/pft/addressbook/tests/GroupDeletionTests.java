@@ -11,7 +11,7 @@ public class GroupDeletionTests extends TestBase {
     app.getSessionHelper().Login();
     app.getNavigationHelper().goToGroupsPage();
     String before = app.getGroupHelper().getListOfGroups2();
-    app.getGroupHelper().selectGroup();
+    app.getGroupHelper().selectFirstGroup();
     app.getGroupHelper().deleteSelectedGroup();
     app.getNavigationHelper().goToGroupsPage();
     System.out.println("Before: "+before );
@@ -19,4 +19,9 @@ public class GroupDeletionTests extends TestBase {
 
   }
 
+  @Test
+  void deleteAllGroups(){
+    app.getNavigationHelper().goToGroupsPage();
+    app.getGroupHelper().deleteAllGroups();
+  }
 }
