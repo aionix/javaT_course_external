@@ -20,7 +20,7 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreationGroup(){
         app.getNavigationHelper().goToHomePage();
         app.getContactHelper().initNewContact();
-        app.getContactHelper().fillContactForm(new ContactData("testFirst2", "testLast2", "group_name5"), true);
+        app.getContactHelper().fillContactForm(new ContactData("testFirst3", "testLast2", "group_name5"), true);
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

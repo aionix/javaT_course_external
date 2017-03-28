@@ -45,20 +45,19 @@ public class GroupHelper extends HelperBase {
       list =  m.getText();
     }
     return list;
-
   }
 
-  public void deleteSelectedGroup() {
+  public void initDeletion() {
     click(By.cssSelector("#content>form>input:nth-of-type(2)"));
   }
-  public void deleteAllGroups(){
+
+  public void selectAllGroups(){
     List<WebElement> groups;
     groups = wd.findElements(By.className("group"));
-    for (WebElement el : groups){
-      el.findElement(By.name("selected[]")).click();
-      System.out.println(el.getText());
+    for (int i = 0; i < groups.size()-1; i++) {
+      groups.get(i).findElement(By.name("selected[]")).click();
     }
-  }
+    }
 
   public void selectFirstGroup() {
    click(By.xpath("*//span[1]"));

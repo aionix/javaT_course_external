@@ -12,9 +12,16 @@ public class NavigationHelper extends HelperBase {
   }
 
   public void goToGroupsPage() {
+    if(isElementPresent(By.cssSelector("h1"))
+            && wd.findElement(By.cssSelector("h1")).getText().equals("Groups")
+            && isElementPresent(By.xpath("*//input[1][@value='New group']"))){
+      return;
+    }
     click(By.linkText("groups"));
   }
   public void goToHomePage(){
-    click(By.id("logo"));
+    if(isElementPresent(By.id("maintable"))){
+      return;
+    }click(By.id("logo"));
   }
 }

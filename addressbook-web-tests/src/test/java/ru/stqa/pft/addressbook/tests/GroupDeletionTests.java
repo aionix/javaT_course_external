@@ -8,20 +8,18 @@ import org.testng.annotations.Test;
 public class GroupDeletionTests extends TestBase {
   @Test
   public void deleteGroup(){
-    app.getSessionHelper().Login();
     app.getNavigationHelper().goToGroupsPage();
-    String before = app.getGroupHelper().getListOfGroups2();
-    app.getGroupHelper().selectFirstGroup();
-    app.getGroupHelper().deleteSelectedGroup();
+    app.getGroupHelper().selectAllGroups();
+    app.getGroupHelper().initDeletion();
     app.getNavigationHelper().goToGroupsPage();
-    System.out.println("Before: "+before );
-    app.getGroupHelper().getListOfGroups();
+   // System.out.println("Before: "+before );
+   // app.getGroupHelper().getListOfGroups();
 
   }
 
   @Test
   void deleteAllGroups(){
     app.getNavigationHelper().goToGroupsPage();
-    app.getGroupHelper().deleteAllGroups();
+    app.getGroupHelper().selectAllGroups();
   }
 }
