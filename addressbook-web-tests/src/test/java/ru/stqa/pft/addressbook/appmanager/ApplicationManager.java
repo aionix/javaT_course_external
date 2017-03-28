@@ -12,16 +12,17 @@ import sun.plugin2.util.BrowserType;
  * Created by Артем on 26.03.2017.
  */
 public class ApplicationManager {
+  public ApplicationManager(int browser) {
+    this.browser = browser;
+  }
+
   public WebDriver wd;
   public WebDriverWait wait;
   private int browser;
   private GroupHelper groupHelper;
   private NavigationHelper navigationHelper;
   private SessionHelper sessionHelper;
-
-  public ApplicationManager(int browser) {
-    this.browser = browser;
-  }
+  private ContactHelper contactHelper;
 
   public void init() {
     if (browser == BrowserType.MOZILLA){
@@ -33,10 +34,11 @@ public class ApplicationManager {
       //System.setProperty("webdriver.ie.driver", "C:\\drivers\\IEDriverServer.exe");
       wd = new InternetExplorerDriver();
     }
-    wait = new WebDriverWait(wd, 10);
-    groupHelper = new GroupHelper(wd);
-    navigationHelper = new NavigationHelper(wd);
-    sessionHelper = new SessionHelper(wd);
+    wait =              new WebDriverWait(wd, 10);
+    groupHelper =       new GroupHelper(wd);
+    navigationHelper =  new NavigationHelper(wd);
+    sessionHelper =     new SessionHelper(wd);
+    contactHelper =     new ContactHelper(wd);
 //default page
     wd.get("http://localhost/addressbook/");
     sessionHelper.Login();
@@ -51,6 +53,5 @@ public class ApplicationManager {
   }
   public NavigationHelper getNavigationHelper() {return  navigationHelper;}
   public SessionHelper getSessionHelper(){return  sessionHelper;}
-
-
+  public ContactHelper getContactHelper() {return contactHelper;}
 }
