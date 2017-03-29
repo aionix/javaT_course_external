@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class GroupHelper extends HelperBase {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  public void getListOfGroups() {
+  public void printOutAllGroups() {
     List<WebElement> groups;
     groups = wd.findElements(By.className("group"));
     for (WebElement m : groups) {
@@ -48,7 +49,16 @@ public class GroupHelper extends HelperBase {
       System.out.println(groups.get(i).getText());
       groups.get(i).findElement(By.name("selected[]")).click();
     }
-    }
+  }
+  public List<GroupData> getListOfGroups(){
+    List<GroupData> groups = new ArrayList<GroupData>();
+    List<WebElement> elements = wd.findElements(By.className("group"));
+    for (int i = 0; i < elements.size(); i++) {
+      String name = elements.get(i).getText();
+        GroupData group = new GroupData(name, null, null);
+        groups.add(group);
+    }return groups;
+  }
 
   public void selectFirstGroup() {
    click(By.xpath("*//span[1]"));
