@@ -9,8 +9,12 @@ import ru.stqa.pft.addressbook.model.GroupData;
 public class GroupModificationTests extends TestBase {
 
   @Test
-  void testGroupMidification(){
+  void testFirstGroupMidification(){
     app.getNavigationHelper().goToGroupsPage();
+    if(! app.getGroupHelper().isThereAGroup()){
+      app.getGroupHelper().createGroup(new GroupData("forMidification", "header", "footer"));
+      app.getNavigationHelper().goToGroupsPage();
+    }
     app.getGroupHelper().selectFirstGroup();
     app.getGroupHelper().initGroupModification();
     app.getGroupHelper().fillGroupForm(new GroupData("group_name1", "header1", "footer1"));

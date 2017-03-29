@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -15,12 +16,15 @@ public class GroupHelper extends HelperBase {
     super(wd);
   }
 
-  public void initNewGroup() {
-    click(By.xpath("*//input[1][@value='New group']"));
+  public void initNewGroup() { click(By.xpath("*//input[1][@value='New group']"));
   }
-
-  public void submitGroupCreation() {
-    click(By.cssSelector("input[name='submit']"));
+  public void submitGroupCreation() {click(By.cssSelector("input[name='submit']"));
+  }
+  public void initGroupModification() {click(By.cssSelector("#content>form>input:nth-of-type(3)"));
+  }
+  public void submitGroupModification() {click(By.name("update"));
+  }
+  public void initDeletion() {click(By.cssSelector("#content>form>input:nth-of-type(2)"));
   }
 
   public void fillGroupForm(GroupData groupData) {
@@ -33,28 +37,15 @@ public class GroupHelper extends HelperBase {
     List<WebElement> groups;
     groups = wd.findElements(By.className("group"));
     for (WebElement m : groups) {
-      System.out.println(m.getText());
+      System.out.println(m.getText());//два раза первый елемент выберает
     }
-    System.out.println(groups.get(0).getText());   //почему-то возвращает null а get text  все ок
-  }
-  public String getListOfGroups2() {
-    List<WebElement> groups;
-    String list = null;
-    groups = wd.findElements(By.className("group"));
-    for (WebElement m : groups) {
-      list =  m.getText();
-    }
-    return list;
-  }
-
-  public void initDeletion() {
-    click(By.cssSelector("#content>form>input:nth-of-type(2)"));
   }
 
   public void selectAllGroups(){
     List<WebElement> groups;
     groups = wd.findElements(By.className("group"));
-    for (int i = 0; i < groups.size()-1; i++) {
+    for (int i = 0; i < groups.size(); i++) {
+      System.out.println(groups.get(i).getText());
       groups.get(i).findElement(By.name("selected[]")).click();
     }
     }
@@ -64,10 +55,18 @@ public class GroupHelper extends HelperBase {
    // click(By.name("selected[]"));
 }
 
-  public void initGroupModification() {
-    click(By.cssSelector("#content>form>input:nth-of-type(3)"));
+  public boolean isThereAGroup() {
+      return isElementPresent(By.className("group"));
   }
-  public void submitGroupModification() {
-    click(By.name("update"));
+
+  public void createGroup(GroupData groupData) {
+    initNewGroup();
+    fillGroupForm(groupData);
+    submitGroupCreation();
+  }
+
+  public int getGroupCount() {
+    return wd.findElements(By.className("group")).size();
   }
 }
+
