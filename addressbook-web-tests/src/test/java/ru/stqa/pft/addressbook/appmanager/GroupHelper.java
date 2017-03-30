@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -17,8 +16,11 @@ public class GroupHelper extends HelperBase {
     super(wd);
   }
 
-  public void initNewGroup() { click(By.xpath("*//input[1][@value='New group']"));
-  }
+ // public void initNewGroup() { click(By.xpath("*//input[1][@value='New group']"));}
+  public void initNewGroup() { click(By.cssSelector("#content>form>input[name='new']:nth-of-type(1)"));}
+  //public void initNewGroup() { click(By.cssSelector("input[value='New group']"));}
+  //public void initNewGroup() { click(By.name("new"));}
+
   public void submitGroupCreation() {click(By.cssSelector("input[name='submit']"));
   }
   public void initGroupModification() {click(By.cssSelector("#content>form>input:nth-of-type(3)"));
@@ -55,7 +57,8 @@ public class GroupHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.className("group"));
     for (int i = 0; i < elements.size(); i++) {
       String name = elements.get(i).getText();
-        GroupData group = new GroupData(name, null, null);
+      int id = Integer.parseInt(elements.get(i).findElement(By.tagName("input")).getAttribute("value"));   //достаем value из списка груп
+        GroupData group = new GroupData(id, name, null, null);
         groups.add(group);
     }return groups;
   }
@@ -70,7 +73,6 @@ public class GroupHelper extends HelperBase {
   }
 
   public void createGroup(GroupData groupData) {
-    initNewGroup();
     fillGroupForm(groupData);
     submitGroupCreation();
   }
