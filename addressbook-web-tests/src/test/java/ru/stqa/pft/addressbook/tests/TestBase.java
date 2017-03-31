@@ -1,8 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.openqa.selenium.By;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 import sun.plugin2.util.BrowserType;
 
@@ -10,14 +9,13 @@ import sun.plugin2.util.BrowserType;
  * Created by Артем on 26.03.2017.
  */
 public class TestBase {
-  protected final ApplicationManager app = new ApplicationManager(BrowserType.DEFAULT);
+  protected final static ApplicationManager app = new ApplicationManager(BrowserType.DEFAULT);
 
-  @BeforeClass
-  public void setUp() {
-    app.init();
+  @BeforeSuite
+  public void setUp() { app.init();
   }
 
-  @AfterMethod
+  @AfterSuite
   public void tearDown(){
     app.closeBrowser();
   }

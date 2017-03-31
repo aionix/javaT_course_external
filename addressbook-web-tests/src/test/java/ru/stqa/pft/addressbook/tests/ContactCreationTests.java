@@ -8,7 +8,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
  */
 public class ContactCreationTests extends TestBase {
 
-    @Test
+    @Test(enabled = false)
     public void testContactCreationNullGroup(){
         app.getNavigationHelper().goToHomePage();
         app.getContactHelper().initNewContact();
@@ -16,7 +16,8 @@ public class ContactCreationTests extends TestBase {
         app.getContactHelper().submitContactCreation();
         app.getNavigationHelper().goToHomePage();
     }
-    @Test
+
+    @Test(enabled = false)
     public void testContactCreationGroup(){
         app.getNavigationHelper().goToHomePage();
         app.getContactHelper().initNewContact();
