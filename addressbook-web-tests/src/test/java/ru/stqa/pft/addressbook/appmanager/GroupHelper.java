@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Артем on 26.03.2017.
@@ -21,7 +23,6 @@ public class GroupHelper extends HelperBase {
         click(By.cssSelector("#content>form>input[name='new']:nth-of-type(1)"));
     }
     //public void initNewGroup() { click(By.cssSelector("input[value='New group']"));}
-    //public void initNewGroup() { click(By.name("new"));}
 
     public void submitGroupCreation() {
         click(By.cssSelector("input[name='submit']"));
@@ -62,8 +63,19 @@ public class GroupHelper extends HelperBase {
         }
     }
 
+    public Set<GroupData> getSetOfGroups() {
+        Set<GroupData> groups = new HashSet<>();
+        List<WebElement> elements = wd.findElements(By.className("group"));
+        for (int i = 0; i < elements.size(); i++) {
+            String name = elements.get(i).getText();
+            int id = Integer.parseInt(elements.get(i).findElement(By.tagName("input")).getAttribute("value"));   //достаем value из списка груп
+            GroupData group = new GroupData(id, name, null, null);
+            groups.add(group);
+        }
+        return groups;
+    }
     public List<GroupData> getListOfGroups() {
-        List<GroupData> groups = new ArrayList<GroupData>();
+        List<GroupData> groups = new ArrayList<>();
         List<WebElement> elements = wd.findElements(By.className("group"));
         for (int i = 0; i < elements.size(); i++) {
             String name = elements.get(i).getText();

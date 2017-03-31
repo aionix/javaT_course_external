@@ -7,6 +7,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Артем on 26.03.2017.
@@ -14,25 +15,25 @@ import java.util.List;
 public class GroupModificationTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions(){
-    app.getNavigationHelper().goToGroupsPage();
-    if(! app.goTo().isThereAGroup()){
-      app.goTo().createGroup(new GroupData("forMidif", "header", "footer"));
-      app.getNavigationHelper().goToGroupsPage();
+    app.goTo().GroupsPage();
+    if(! app.group().isThereAGroup()){
+      app.group().createGroup(new GroupData("forMidif", "header", "footer"));
+      app.goTo().GroupsPage();
   }}
 
   @Test
   void testFirstGroupMidification(){
-    List<GroupData> before = app.goTo().getListOfGroups();
+    Set<GroupData> before = app.group().getListOfGroups();
     int index = 0;
     GroupData group = new GroupData(before.get(index).getId(),"group_name14", "header2", "footer1");
-    app.goTo().modifyGroup(index, group);
-    app.getNavigationHelper().goToGroupsPage();
-    List<GroupData> after = app.goTo().getListOfGroups();
+    app.group().modifyGroup(index, group);
+    app.goTo().GroupsPage();
+    Set<GroupData> after = app.group().getListOfGroups();
 
     before.remove(before.get(index));
     before.add(group);
-    System.out.println("bef "+before);
-    System.out.println("aft"+after);
+    System.out.println("before "+before);
+    System.out.println("after"+after);
     Assert.assertEquals(new HashSet<Object>(after), new HashSet<Object>(before) );
 
   }

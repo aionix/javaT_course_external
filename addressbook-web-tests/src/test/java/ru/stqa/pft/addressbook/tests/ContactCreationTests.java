@@ -10,16 +10,16 @@ public class ContactCreationTests extends TestBase {
 
     @Test(enabled = false)
     public void testContactCreationNullGroup(){
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().goToHomePage();
         app.getContactHelper().initNewContact();
         app.getContactHelper().fillContactForm(new ContactData("testFirst", "testLast", null), true);
         app.getContactHelper().submitContactCreation();
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().goToHomePage();
     }
 
     @Test(enabled = false)
     public void testContactCreationGroup(){
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().goToHomePage();
         app.getContactHelper().initNewContact();
         app.getContactHelper().fillContactForm(new ContactData("testFirst3", "testLast2", "group_name5"), true);
         try {
@@ -28,7 +28,7 @@ public class ContactCreationTests extends TestBase {
             e.printStackTrace();
         }
         app.getContactHelper().submitContactCreation();
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().goToHomePage();
     }
 
 

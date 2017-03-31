@@ -13,25 +13,25 @@ import java.util.List;
 public class GroupDeletionTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions(){
-    app.getNavigationHelper().goToGroupsPage();
-    if(! app.goTo().isThereAGroup()){
-      app.goTo().createGroup(new GroupData("forMidif", "header", "footer"));
-      app.getNavigationHelper().goToGroupsPage();
+    app.goTo().GroupsPage();
+    if(! app.group().isThereAGroup()){
+      app.group().createGroup(new GroupData("forMidif", "header", "footer"));
+      app.goTo().GroupsPage();
     }}
 
   @Test
   public void deleteFirstGroup(){
-    app.getNavigationHelper().goToGroupsPage();
-    if(! app.goTo().isThereAGroup()){
-      app.goTo().initNewGroup();
-      app.goTo().createGroup(new GroupData("forDeletion", "header", "footer"));
-      app.getNavigationHelper().goToGroupsPage();
+    app.goTo().GroupsPage();
+    if(! app.group().isThereAGroup()){
+      app.group().initNewGroup();
+      app.group().createGroup(new GroupData("forDeletion", "header", "footer"));
+      app.goTo().GroupsPage();
     }
-    List<GroupData> before = app.goTo().getListOfGroups();
-    app.goTo().selectFirstGroup();
-    app.goTo().initDeletion();
-    app.getNavigationHelper().goToGroupsPage();
-    List <GroupData> after = app.goTo().getListOfGroups();
+    List<GroupData> before = app.group().getListOfGroups();
+    app.group().selectFirstGroup();
+    app.group().initDeletion();
+    app.goTo().GroupsPage();
+    List <GroupData> after = app.group().getListOfGroups();
     Assert.assertEquals(after.size(), before.size() -1);
     before.remove(before.get(0));
 
@@ -46,9 +46,9 @@ public class GroupDeletionTests extends TestBase {
 
   @Test
   void deleteAllGroups(){
-    app.getNavigationHelper().goToGroupsPage();
-    app.goTo().selectAllGroups();
+    app.goTo().GroupsPage();
+    app.group().selectAllGroups();
     System.out.println("+++++++++++++++++");
-    app.goTo().getListOfGroups();
+    app.group().getListOfGroups();
   }
 }

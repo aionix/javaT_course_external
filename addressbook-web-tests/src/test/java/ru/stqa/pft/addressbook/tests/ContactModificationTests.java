@@ -10,11 +10,11 @@ public class ContactModificationTests extends TestBase {
 
     @Test(enabled = false)
     public void testContactModification() {
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().goToHomePage();
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("firstModif", "lastModif", "bla"), false);
         app.getContactHelper().submitContactModification();
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().goToHomePage();
     }
 
 
