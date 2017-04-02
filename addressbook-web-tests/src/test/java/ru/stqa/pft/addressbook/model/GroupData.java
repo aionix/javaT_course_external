@@ -21,8 +21,8 @@ public class GroupData {
         this.header = header;
         this.footer = footer;
     }
-    public int    getId()          { return id;}
-    public void   setId(int id)    { this.id = id;}
+    public int    getId()               { return id;}
+    public GroupData   setId(int id)    {this.id = id; return this;}
     public String getName() {
         return name;
     }

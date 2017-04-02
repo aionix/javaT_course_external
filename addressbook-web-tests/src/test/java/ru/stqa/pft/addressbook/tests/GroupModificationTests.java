@@ -23,12 +23,12 @@ public class GroupModificationTests extends TestBase {
 
   @Test
   void testFirstGroupMidification(){
-    Set<GroupData> before = app.group().getListOfGroups();
+    List<GroupData> before = app.group().getListOfGroups();
     int index = 0;
     GroupData group = new GroupData(before.get(index).getId(),"group_name14", "header2", "footer1");
     app.group().modifyGroup(index, group);
     app.goTo().GroupsPage();
-    Set<GroupData> after = app.group().getListOfGroups();
+    List<GroupData> after = app.group().getListOfGroups();
 
     before.remove(before.get(index));
     before.add(group);
