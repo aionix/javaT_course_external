@@ -64,9 +64,10 @@ public class GroupHelper extends HelperBase {
     private Groups groupCache = null;
 
     public Set<GroupData> getSetOfGroups() {
-        if (groupCache != null){
+       /* if (groupCache != null){
             return new Groups(groupCache);
         }
+        groupCache  = new HashSet<>();*/
         Set<GroupData> groups = new HashSet<>();
         List<WebElement> elements = wd.findElements(By.className("group"));
         for (int i = 0; i < elements.size(); i++) {
