@@ -32,6 +32,17 @@ public class ContactHelper extends HelperBase {
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
+        if (creation == true )  //&& contactData.getGroup()!= null
+        {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        }else Assert.assertFalse(isElementPresent(By.name("new_group"))); {
+        }
+    }
+    public void fillContactFormPhoto(ContactData contactData, boolean creation) {
+        type(By.name("firstname"), contactData.getFirstname());
+        type(By.name("lastname"), contactData.getLastname());
+        attach(By.name("photo"), contactData.getPhoto());
+
         if (creation == true && contactData.getGroup()!= null )
         {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());

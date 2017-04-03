@@ -19,11 +19,10 @@ public class GroupCreationTests extends TestBase {
 
   @Test
   void createGroup() {
-    for(int i = 20; i < 30; i++) {
       app.goTo().GroupsPage();
       Set<GroupData> before = app.group().getSetOfGroups();
       app.group().initNewGroup();
-      GroupData group = new GroupData("ZooLand2_"+ i +"", "zoooo", "footer");
+      GroupData group = new GroupData("ZooLand2_", "zoooo", "footer");
       app.group().createGroup(group);
       app.goTo().GroupsPage();
       Set<GroupData> after = app.group().getSetOfGroups();
@@ -32,8 +31,6 @@ public class GroupCreationTests extends TestBase {
 
       before.add(group.setId(max));                         //присваиваю макс ИД последей созданной группе
       assertThat(after, equalTo(before));
-    }
-
   }
 
   @Test(enabled = false)

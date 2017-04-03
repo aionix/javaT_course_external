@@ -19,12 +19,14 @@ public class ContactCreationTests extends TestBase {
         app.goTo().goToHomePage();
     }
 
-    @Test(enabled = false)
-    public void testContactCreationGroup(){
+    @Test//(enabled = false)
+    public void testContactCreationGroupWithPhoto(){
         app.goTo().goToHomePage();
         app.getContactHelper().initNewContact();
         File photo = new File("src/test/resources/pic.jpg");
-        app.getContactHelper().fillContactForm(new ContactData("name", "lastname").withPhoto(photo), true);
+        app.getContactHelper()
+                .fillContactFormPhoto(new ContactData("createWithPhoto", "lastname", "aa1")
+                .withPhoto(photo), true);
         app.getContactHelper().submitContactCreation();
         app.goTo().goToHomePage();
     }
