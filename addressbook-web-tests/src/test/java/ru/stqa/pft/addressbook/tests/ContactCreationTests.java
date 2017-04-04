@@ -23,6 +23,7 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreationGroupWithPhoto(){
         app.goTo().goToHomePage();
         app.getContactHelper().initNewContact();
+        System.out.println(new File(".").getAbsoluteFile());
         File photo = new File("src/test/resources/pic.jpg");
         app.getContactHelper()
                 .fillContactFormPhoto(new ContactData("createWithPhoto", "lastname", "aa1")
