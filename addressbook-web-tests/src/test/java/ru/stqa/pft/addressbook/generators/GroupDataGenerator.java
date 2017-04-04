@@ -44,7 +44,7 @@ public class GroupDataGenerator {
         System.out.println(new File(".").getAbsoluteFile());
         Writer writer = new FileWriter(file);
         for(GroupData group: groups){
-            writer.write(String.format("%s;%s;%s\n", group.getName(),
+            writer.write(String.format("%s;%s;%s\n", group.getName(),               //циклом записываем в файл используя типа шаблон Стрингформат
                     group.getHeader(), group.getFooter()));
         }writer.close();
     }

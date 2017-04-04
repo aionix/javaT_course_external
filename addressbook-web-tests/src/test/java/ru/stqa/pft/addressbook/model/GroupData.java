@@ -20,14 +20,18 @@ public class GroupData {
         this.name = name;
         this.header = header;
         this.footer = footer;
-    }
+    }public GroupData(){}
 
 
-    public int    getId()               { return id;}
-    public GroupData   setId(int id)    {this.id = id; return this;}
-    public String getName() {
-        return name;
+    public int          getId()               { return id;
     }
+    public GroupData    setId(int id)         { this.id = id; return this;
+    }
+    public String       getName()             { return name;
+    }
+    public GroupData    setName(String name)  { this.name = name; return this;
+    }
+
     public String getHeader() {
         return header;
     }
