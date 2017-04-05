@@ -26,7 +26,7 @@ public class ContactCreationTests extends TestBase {
         System.out.println(new File(".").getAbsoluteFile());
         File photo = new File("src/test/resources/pic.jpg");
         app.getContactHelper()
-                .fillContactFormPhoto(new ContactData("createWithPhoto", "lastname", "aa1")
+                .fillContactFormPhoto(new ContactData("createWithPhoto7771", "lastname")
                 .withPhoto(photo), true);
         app.getContactHelper().submitContactCreation();
         app.goTo().goToHomePage();

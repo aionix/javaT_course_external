@@ -12,7 +12,8 @@ public class ContactData {
     private File photo;
 
 
-    public File getPhoto() {return photo;}
+    public File getPhoto() { return photo;
+    }
     public ContactData withPhoto(File photo) {
         this.photo = photo;
         return this;
@@ -26,7 +27,6 @@ public class ContactData {
         this.firstname = firstname;
         this.lastname = lasttname;
     }
-
 
     public String getFirstname() {
         return firstname;
