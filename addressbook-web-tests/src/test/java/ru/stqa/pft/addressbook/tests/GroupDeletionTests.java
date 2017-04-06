@@ -16,6 +16,7 @@ public class GroupDeletionTests extends TestBase {
   public void ensurePreconditions(){
     app.goTo().GroupsPage();
     if(! app.group().isThereAGroup()){
+      app.group().initNewGroup();
       app.group().createGroup(new GroupData("forMidif", "header", "footer"));
       app.goTo().GroupsPage();
     }}
@@ -41,5 +42,6 @@ public class GroupDeletionTests extends TestBase {
     app.group().selectAllGroups();
     System.out.println("+++++++++++++++++");
     app.group().getListOfGroups();
+    app.group().initDeletion();
   }
 }

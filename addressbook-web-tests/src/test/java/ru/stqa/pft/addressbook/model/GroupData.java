@@ -1,12 +1,17 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Created by Артем on 26.03.2017.
  */
 public class GroupData {
     private int id;
+    @Expose
     private  String name;
+    @Expose
     private  String header;
+    @Expose
     private  String footer;
 
     public GroupData(int id, String name, String header, String footer) {
