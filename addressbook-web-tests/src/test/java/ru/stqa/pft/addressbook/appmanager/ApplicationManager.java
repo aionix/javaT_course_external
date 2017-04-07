@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import sun.plugin2.util.BrowserType;
+import ru.stqa.pft.addressbook.generators.BrowserType;
 
 
 /**
@@ -13,7 +13,7 @@ import sun.plugin2.util.BrowserType;
  */
 public class ApplicationManager {
   public ApplicationManager(int browser) {
-    this.browser = browser;
+      this.browser = browser;
   }
 
   public WebDriver wd;
@@ -24,16 +24,16 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private ContactHelper contactHelper;
 
-  public void init() {
-    if (browser == BrowserType.MOZILLA){
-        //System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver.exe");
-      wd = new FirefoxDriver();
-    }else  if (browser == BrowserType.DEFAULT){
-      wd = new ChromeDriver();
-    }else if (browser == BrowserType.INTERNET_EXPLORER){
-      //System.setProperty("webdriver.ie.driver", "C:\\drivers\\IEDriverServer.exe");
-      wd = new InternetExplorerDriver();
-    }
+    public void init() {
+        if (browser == BrowserType.MOZILLA) {
+            wd = new FirefoxDriver();
+        } else if (browser == BrowserType.DEFAULT) {
+            wd = new ChromeDriver();
+        } else if (browser == BrowserType.INTERNET_EXPLORER) {
+            System.setProperty("webdriver.ie.driver", "C:\\drivers\\IEDriverServer.exe");
+            wd = new InternetExplorerDriver();
+        }
+        wd = new ChromeDriver();
     wait =              new WebDriverWait(wd, 10);
     groupHelper =       new GroupHelper(wd);
     navigationHelper =  new NavigationHelper(wd);

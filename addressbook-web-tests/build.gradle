@@ -12,8 +12,21 @@ dependencies {
     compile 'com.thoughtworks.xstream:xstream:1.4.9'
     compile 'com.google.code.gson:gson:2.8.0'
 }
-test {
-    useTestNG()
+task testGroups(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng_groups.xml'
+    }
 }
+task testContacts(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng_contacts.xml'
+    }
+}
+
+task hello {
+    println 'hello'
+}
+
+
 
 //compile 'org.seleniumhq.selenium:selenium-java:2.53.1'

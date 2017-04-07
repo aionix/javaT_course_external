@@ -17,6 +17,7 @@ public class GroupModificationTests extends TestBase {
   public void ensurePreconditions(){
     app.goTo().GroupsPage();
     if(! app.group().isThereAGroup()){
+      app.group().initNewGroup();
       app.group().createGroup(new GroupData("forMidif", "header", "footer"));
       app.goTo().GroupsPage();
   }}

@@ -1,15 +1,15 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
-import sun.plugin2.util.BrowserType;
+import ru.stqa.pft.addressbook.generators.BrowserType;
+
 
 /**
  * Created by Артем on 26.03.2017.
  */
 public class TestBase {
-  protected final static ApplicationManager app = new ApplicationManager(BrowserType.DEFAULT);
+  protected final static ApplicationManager app = new ApplicationManager(BrowserType.INTERNET_EXPLORER);
 
   @BeforeSuite
   public void setUp() { app.init();

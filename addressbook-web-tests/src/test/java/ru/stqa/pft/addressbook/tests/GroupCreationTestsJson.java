@@ -27,8 +27,8 @@ public class GroupCreationTestsJson extends TestBase {
 
 @DataProvider
 public Iterator<Object[]> validGroupsFromJson() throws IOException {
+    System.out.println(new File(".").getAbsoluteFile());
     BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.json")));
-    new File(".").getAbsoluteFile();
     String json = "";
     String line = reader.readLine();
     while(line != null){
@@ -48,7 +48,7 @@ public Iterator<Object[]> validGroupsFromJson() throws IOException {
           app.goTo().GroupsPage();
           Set<GroupData> after = app.group().getSetOfGroups();
           assertThat(after.size(), equalTo(before.size() + 1));
-          int max = app.group().getMaxIdFromGroup(after);       //беру макс число, тк как новая группа получает новый ИД
+          int max = app.group().maxidFromGroup(after);       //беру макс число, тк как новая группа получает новый ИД
 
           before.add(group.setId(max));                         //присваиваю макс ИД последей созданной группе
           assertThat(after, equalTo(before));

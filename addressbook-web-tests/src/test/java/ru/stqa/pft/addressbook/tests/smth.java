@@ -11,21 +11,17 @@ import java.util.regex.Pattern;
 public class smth {
   static int count = 0;
   public static void main (String[] args) {
-    String[] la = new String[10];
-    la[0] = "one";
-    String cc = la[0];
-    System.out.println(cc);
 
     String b = "asdbcf hello world";
     String a = "helo";
     smth call = new smth();
-   // call.match(a, b);
+    call.match(a);
     System.out.println(count);
 
   }
   void match(String a){
-    for (int index = 0; ((index = a.indexOf("o"))!= -1); index++) {
-      System.out.println();
+    for (int index = 0; ((index = a.indexOf('o'))!= -1); index=+1) {
+      System.out.println(index);
 
   }
   }
