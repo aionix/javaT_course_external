@@ -32,7 +32,7 @@ public Iterator<Object[]> validGroups(){
           app.goTo().GroupsPage();
           Set<GroupData> after = app.group().getSetOfGroups();
           assertThat(after.size(), equalTo(before.size() + 1));
-          int max = app.group().getMaxIdFromGroup(after);       //беру макс число, тк как новая группа получает новый ИД
+          int max = app.group().maxidFromGroup(after);       //беру макс число, тк как новая группа получает новый ИД
 
           before.add(group.setId(max));                         //присваиваю макс ИД последей созданной группе
           assertThat(after, equalTo(before));

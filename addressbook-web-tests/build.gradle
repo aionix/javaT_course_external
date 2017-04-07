@@ -12,5 +12,8 @@ dependencies {
     compile 'com.thoughtworks.xstream:xstream:1.4.9'
     compile 'com.google.code.gson:gson:2.8.0'
 }
+test {
+    useTestNG()
+}
 
 //compile 'org.seleniumhq.selenium:selenium-java:2.53.1'

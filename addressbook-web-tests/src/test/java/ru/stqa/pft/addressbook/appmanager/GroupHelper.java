@@ -122,7 +122,7 @@ public class GroupHelper extends HelperBase {
         return wd.findElements(By.className("group")).size();
     }
 
-    public int getMaxIdFromGroup(Set<GroupData> list){
+    public int maxidFromGroup(Set<GroupData> list){
         int max = 0;
         for(GroupData g : list){
             if (g.getId() > max){
