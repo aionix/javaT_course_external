@@ -9,7 +9,9 @@ import ru.stqa.pft.addressbook.generators.BrowserType;
  * Created by Артем on 26.03.2017.
  */
 public class TestBase {
-  protected final static ApplicationManager app = new ApplicationManager(BrowserType.INTERNET_EXPLORER);
+  protected final static ApplicationManager app =
+          new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+         // new ApplicationManager(BrowserType.INTERNET_EXPLORER);
 
   @BeforeSuite
   public void setUp() { app.init();

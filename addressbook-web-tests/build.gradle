@@ -16,13 +16,20 @@ task testGroups(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng_groups.xml'
     }
+    systemProperty 'browser', "${browser}"
+}
+task testGroupsDel(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/tesng_groupsdel.xml'
+    }
+    systemProperty 'browser', "${browser}"
 }
 task testContacts(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng_contacts.xml'
     }
+    systemProperty 'browser', "${browser}"
 }
-
 task hello {
     println 'hello'
 }

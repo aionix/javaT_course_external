@@ -7,40 +7,49 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.stqa.pft.addressbook.generators.BrowserType;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
 
 /**
  * Created by Артем on 26.03.2017.
  */
 public class ApplicationManager {
-  public ApplicationManager(int browser) {
+  public ApplicationManager(String browser) throws FileNotFoundException {
       this.browser = browser;
+      properties = new Properties();
   }
-
+  private final Properties properties;
   public WebDriver wd;
   public WebDriverWait wait;
-  private int browser;
+  private String browser;
   private GroupHelper groupHelper;
   private NavigationHelper navigationHelper;
   private SessionHelper sessionHelper;
   private ContactHelper contactHelper;
 
-    public void init() {
-        if (browser == BrowserType.MOZILLA) {
+  public void init() throws IOException {
+    String target = System.getProperty("target", "local");
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+        if (browser.equals(BrowserType.MOZILLA)) {
             wd = new FirefoxDriver();
-        } else if (browser == BrowserType.DEFAULT) {
+        } else if (browser.equals(BrowserType.CHROME)) {
             wd = new ChromeDriver();
-        } else if (browser == BrowserType.INTERNET_EXPLORER) {
+        } else if (browser.equals(BrowserType.INTERNET_EXPLORER)) {
             System.setProperty("webdriver.ie.driver", "C:\\drivers\\IEDriverServer.exe");
             wd = new InternetExplorerDriver();
         }
-        wd = new ChromeDriver();
     wait =              new WebDriverWait(wd, 10);
     groupHelper =       new GroupHelper(wd);
     navigationHelper =  new NavigationHelper(wd);
     sessionHelper =     new SessionHelper(wd);
     contactHelper =     new ContactHelper(wd);
 //default page
-    wd.get("http://localhost/addressbook/");
+    wd.get(properties.getProperty("web.baseURL"));
     sessionHelper.Login();
   }
 
