@@ -5,6 +5,7 @@ import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.log4testng.Logger;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.*;
@@ -25,6 +26,7 @@ public Iterator<Object[]> validGroups(){
 }
   @Test(dataProvider = "validGroups")
   void createGroup(GroupData group) {
+
           app.goTo().GroupsPage();
           Set<GroupData> before = app.group().getSetOfGroups();
           app.group().initNewGroup();

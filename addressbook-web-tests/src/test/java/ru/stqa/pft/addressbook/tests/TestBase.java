@@ -4,17 +4,14 @@ import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 import ru.stqa.pft.addressbook.generators.BrowserType;
 
+import java.io.IOException;
 
-/**
- * Created by Артем on 26.03.2017.
- */
-public class TestBase {
-  protected final static ApplicationManager app =
-          new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+public class TestBase  {
+  public final static ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
          // new ApplicationManager(BrowserType.INTERNET_EXPLORER);
 
   @BeforeSuite
-  public void setUp() { app.init();
+  public void setUp() throws IOException { app.init();
   }
 
   @AfterSuite

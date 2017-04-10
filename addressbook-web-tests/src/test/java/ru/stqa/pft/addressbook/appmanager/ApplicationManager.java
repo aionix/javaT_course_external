@@ -18,7 +18,7 @@ import java.util.Properties;
  * Created by Артем on 26.03.2017.
  */
 public class ApplicationManager {
-  public ApplicationManager(String browser) throws FileNotFoundException {
+  public ApplicationManager(String browser)  {
       this.browser = browser;
       properties = new Properties();
   }
@@ -50,7 +50,8 @@ public class ApplicationManager {
     contactHelper =     new ContactHelper(wd);
 //default page
     wd.get(properties.getProperty("web.baseURL"));
-    sessionHelper.Login();
+    sessionHelper.Login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+   // sessionHelper.Login();
   }
 
   public void closeBrowser() {

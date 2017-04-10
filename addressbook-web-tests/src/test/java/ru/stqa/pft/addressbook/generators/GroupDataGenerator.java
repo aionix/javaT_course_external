@@ -71,7 +71,7 @@ public class GroupDataGenerator {
         for (int i = 0; i < count; i++)
             group.add(new GroupData((String.format("test %s", i)),
                     "asd "+i+"",
-                    "fotter "));
+                    "footer "));
         return group;
     }
 }
