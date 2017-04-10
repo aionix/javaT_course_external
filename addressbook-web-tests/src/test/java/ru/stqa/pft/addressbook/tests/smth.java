@@ -2,6 +2,10 @@ package ru.stqa.pft.addressbook.tests;
 
 import net.sourceforge.htmlunit.corejs.javascript.regexp.SubString;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,6 +29,16 @@ public class smth {
 
   }
   }
+
+  /*public  String init() throws IOException {
+
+    properties = new Properties();
+    String target = System.getProperty("target", "local");
+    // System.out.println(new File(".").getAbsolutePath());
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+    return properties.getProperty("web.adminPassword");
+
+  }*/
 /*  void match(String a, String b) {
     for (int i = 0; i < a.length(); i++) {
       for(int j = 0; j < b.length(); j++) {
