@@ -20,7 +20,7 @@ public class GroupCreationTests extends TestBase {
 @DataProvider
 public Iterator<Object[]> validGroups(){
     List<Object[]> list = new ArrayList<>();
-    list.add(new Object[] {new GroupData("n1'","h1","f1")});
+    list.add(new Object[] {new GroupData("n1","h1","f1")});
     list.add(new Object[] {new GroupData("n2","h2","f2")});
     return list.iterator();
 }

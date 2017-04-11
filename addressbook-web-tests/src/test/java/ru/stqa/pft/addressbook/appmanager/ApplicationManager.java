@@ -33,11 +33,13 @@ public class ApplicationManager {
 
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
+      System.out.println(new File(".").getAbsoluteFile());
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
         if (browser.equals(BrowserType.MOZILLA)) {
             wd = new FirefoxDriver();
         } else if (browser.equals(BrowserType.CHROME)) {
+            System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
             wd = new ChromeDriver();
         } else if (browser.equals(BrowserType.INTERNET_EXPLORER)) {
             System.setProperty("webdriver.ie.driver", "C:\\drivers\\IEDriverServer.exe");

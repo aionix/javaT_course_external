@@ -36,7 +36,7 @@ public class GroupDeletionTests extends TestBase {
     Assert.assertEquals(after, before);                             //сравниваем объекты групдата по 2м полям
     }
 
-  @Test
+  @Test(enabled = false)
   void deleteAllGroups(){
     app.goTo().GroupsPage();
     app.group().selectAllGroups();
