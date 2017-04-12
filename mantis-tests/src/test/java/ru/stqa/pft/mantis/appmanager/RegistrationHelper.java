@@ -1,21 +1,19 @@
 package ru.stqa.pft.mantis.appmanager;
+import org.openqa.selenium.By;
 
-import org.openqa.selenium.WebDriver;
+import static org.openqa.selenium.By.cssSelector;
 
-/**
- * Created by Sergey on 11.04.2017.
- */
-public class RegistrationHelper {
-    private final ApplicationManager app;
-    private WebDriver wd;
+
+public class RegistrationHelper extends HelperBase {
 
     public RegistrationHelper(ApplicationManager app) {
-        this.app = app;
-        wd = app.getDriver();
-
+        super(app);
     }
 
-    public void start(String name, String email) {
-        wd.get(app.getProperty(app.getProperty("web.baseURL")+"/login.php"));
+    public void start(String username, String email) {
+        wd.get(app.getProperty("web.baseURL")+"/signup_page.php");
+        type(By.name("username"), username);
+        type(By.name("email"), username);
+        click(By.cssSelector(".button[value='Signup']"));
     }
 }

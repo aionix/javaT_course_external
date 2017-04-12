@@ -16,10 +16,16 @@ import java.util.Properties;
  * Created by Артем on 26.03.2017.
  */
 public class ApplicationManager {
-  public ApplicationManager(String browser)  {
+    private MailHelper          mailHelper;
+    private RegistrationHelper  registrationHelper;
+    private FtpHelper           ftp;
+
+    public ApplicationManager(String browser)  {
       this.browser = browser;
       properties = new Properties();
   }
+
+
   public final Properties properties;
   private WebDriver wd;
   public WebDriverWait wait;
@@ -27,15 +33,14 @@ public class ApplicationManager {
 
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
-      System.out.println(new File(".").getAbsoluteFile());
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-
    // sessionHelper.Login();
   }
 
   public void closeBrowser() {
-    wd.quit();
-  }
+      if(wd != null){
+          wd.quit();
+      }}
 
   public HttpSession newSession(){
       return new HttpSession(this);
@@ -45,8 +50,21 @@ public class ApplicationManager {
     }
 
     public RegistrationHelper registration() {
-      return new RegistrationHelper(this);
+      if (registrationHelper == null){
+          registrationHelper = new RegistrationHelper(this);
+      }return registrationHelper;
     }
+    public  FtpHelper ftp(){
+        if( wd == null) {
+            ftp = new FtpHelper(this);
+        }return ftp;
+    }
+    public  MailHelper mailHelper(){
+        if( mailHelper == null) {
+            mailHelper = new MailHelper(this);
+        }return mailHelper;
+    }
+
 
     public WebDriver getDriver() {
       if( wd == null){
@@ -60,9 +78,9 @@ public class ApplicationManager {
               wd = new InternetExplorerDriver();
           }
           wait = new WebDriverWait(wd, 10);
-//default page
-          wd.get(properties.getProperty("web.baseURL"));
-      }
-        return wd;
+            //default page
+            // wd.get(properties.getProperty("web.baseURL"));
+      }return wd;
     }
+
 }
