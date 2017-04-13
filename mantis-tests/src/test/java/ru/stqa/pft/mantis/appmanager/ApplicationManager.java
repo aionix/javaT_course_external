@@ -19,6 +19,7 @@ public class ApplicationManager {
     private MailHelper          mailHelper;
     private RegistrationHelper  registrationHelper;
     private FtpHelper           ftp;
+    private SoapHelper          soapHelper;
 
     public ApplicationManager(String browser)  {
       this.browser = browser;
@@ -54,15 +55,20 @@ public class ApplicationManager {
           registrationHelper = new RegistrationHelper(this);
       }return registrationHelper;
     }
-    public  FtpHelper ftp(){
+  /*  public  FtpHelper ftp(){
         if( wd == null) {
             ftp = new FtpHelper(this);
         }return ftp;
-    }
+    }*/
     public  MailHelper mailHelper(){
         if( mailHelper == null) {
             mailHelper = new MailHelper(this);
         }return mailHelper;
+    }
+    public SoapHelper soapHelper(){
+        if(soapHelper == null){
+            soapHelper =  new SoapHelper(this);
+        }return soapHelper;
     }
 
 

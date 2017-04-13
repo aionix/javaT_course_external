@@ -10,10 +10,10 @@ import java.io.IOException;
  * Created by Sergey on 12.04.2017.
  */
 public class FtpHelper {
-    private final ApplicationManager app;
-    private FTPClient ftp;
+/*    private final ApplicationManager app;
+    private FTPClient ftp;*/
 
-    public FtpHelper(ApplicationManager app){
+  /*  public FtpHelper(ApplicationManager app){
         this.app = app;
         ftp = new FTPClient();
     }
@@ -32,6 +32,6 @@ public class FtpHelper {
         ftp.deleteFile(target);
         ftp.rename(target, backup);
         ftp.disconnect();
-    }
+    }*/
 }
 
