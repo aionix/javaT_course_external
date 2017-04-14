@@ -3,6 +3,7 @@ import biz.futureware.mantis.rpc.soap.client.MantisConnectLocator;
 import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
 import biz.futureware.mantis.rpc.soap.client.ProjectData;
 import org.testng.annotations.Test;
+import ru.stqa.pft.mantis.model.Issue;
 import ru.stqa.pft.mantis.model.Project;
 import javax.xml.rpc.ServiceException;
 import java.net.MalformedURLException;
@@ -20,10 +21,7 @@ public class SoapTests extends TestBase {
         Set<Project> projects = app.soapHelper().getProjects();
         for (Project project : projects) {
             System.out.println("name is: " + project.getName());
-        }
-
-    }
-
+        }}
 
     @Test
     public void getProj2() throws RemoteException, ServiceException, MalformedURLException {
@@ -32,6 +30,14 @@ public class SoapTests extends TestBase {
         ProjectData[] projects = mc.mc_projects_get_user_accessible("administrator", "root");
         for (ProjectData project : projects) {
             System.out.println("name is: " + project.getName());
-        }
+        }}
+
+    @Test
+    public void testCreateIssue() throws RemoteException, ServiceException, MalformedURLException {
+        Set<Project> projects = app.soapHelper().getProjects();
+        Issue issue = new Issue().withSummary("Bug number1")
+                .withDescription("issue description")
+                .withProject(projects.iterator().next());
+        Issue issueCreated = app.soapHelper().addIssue(issue);
     }
 }
