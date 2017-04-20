@@ -42,10 +42,7 @@ public class GroupModificationTests extends TestBase {
     System.out.println("before "+before);
     System.out.println("after"+after);
     Assert.assertEquals(new HashSet<Object>(after), new HashSet<Object>(before) );
-
   }
-
-
 
 
 }

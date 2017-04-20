@@ -7,7 +7,7 @@ import ru.stqa.pft.addressbook.generators.BrowserType;
 import java.io.IOException;
 
 public class TestBase  {
-  public final static ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+  public final static ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.INTERNET_EXPLORER));
          // new ApplicationManager(BrowserType.INTERNET_EXPLORER);
 
   @BeforeSuite

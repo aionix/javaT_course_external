@@ -27,9 +27,27 @@ task testGroupsModif(type: Test) {
     }
 }
 
+task testGroupsCreate(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng.xml'
+    }
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
+    }
+}
+
 task testGroupsDel(type: Test) {
     useTestNG(){
         suites 'src/test/resources/tesng_groupsdel.xml'
+    }
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
     }
 }
 
