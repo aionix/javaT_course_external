@@ -15,7 +15,7 @@ dependencies {
     compile 'mysql:mysql-connector-java:6.0.6'
     compile 'org.hibernate:hibernate-core:5.1.4.Final'
 }
-task testGroups(type: Test) {
+task testGroupsModif(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng_groups.xml'
     }
