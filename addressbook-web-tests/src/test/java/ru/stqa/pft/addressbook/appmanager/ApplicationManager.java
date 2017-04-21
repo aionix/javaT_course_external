@@ -54,7 +54,7 @@ public class ApplicationManager {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName(browser);
         wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
-        capabilities.setPlatform(Platform.fromString(System.getProperty("platfrom", "win7")));
+     //   capabilities.setPlatform(Platform.fromString(System.getProperty("platfrom", "win7")));
     }
     wait =              new WebDriverWait(wd, 10);
     groupHelper =       new GroupHelper(wd);
