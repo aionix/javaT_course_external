@@ -19,6 +19,9 @@ task testGroupsModif(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng_groups.xml'
     }
+    if (project.hasProperty('platform')){
+        systemProperty 'platform', "${platform}"
+    }
     if (project.hasProperty('browser')){
         systemProperty 'browser', "${browser}"
     }
@@ -31,12 +34,16 @@ task testGroupsCreate(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng.xml'
     }
+    if (project.hasProperty('platform')){
+        systemProperty 'platform', "${platform}"
+    }
     if (project.hasProperty('browser')){
         systemProperty 'browser', "${browser}"
     }
     if (project.hasProperty('target')){
         systemProperty 'target', "${target}"
     }
+
 }
 
 task testGroupsDel(type: Test) {
