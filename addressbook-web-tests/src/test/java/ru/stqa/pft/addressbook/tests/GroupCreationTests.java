@@ -20,8 +20,8 @@ public class GroupCreationTests extends TestBase {
 @DataProvider
 public Iterator<Object[]> validGroups(){
     List<Object[]> list = new ArrayList<>();
-    list.add(new Object[] {new GroupData("n1","h1","f1")});
-    list.add(new Object[] {new GroupData("n2","h2","f2")});
+    list.add(new Object[] {new GroupData("n11","h1","f1")});
+    list.add(new Object[] {new GroupData("n12'","h2","f2")});
     return list.iterator();
 }
   @Test(dataProvider = "validGroups")
@@ -34,9 +34,9 @@ public Iterator<Object[]> validGroups(){
           app.goTo().GroupsPage();
           Set<GroupData> after = app.group().getSetOfGroups();
           assertThat(after.size(), equalTo(before.size() + 1));
-          int max = app.group().maxidFromGroup(after);       //беру макс число, тк как новая группа получает новый ИД
+          int max = app.group().maxidFromGroup(after);       //take max number - new group gets new number
 
-          before.add(group.setId(max));                         //присваиваю макс ИД последей созданной группе
+          before.add(group.setId(max));                         //set max value to newly created group
           assertThat(after, equalTo(before));
   }
 

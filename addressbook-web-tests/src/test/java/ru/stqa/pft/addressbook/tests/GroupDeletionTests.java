@@ -21,7 +21,7 @@ public class GroupDeletionTests extends TestBase {
       app.goTo().GroupsPage();
     }}
 
-  @Test
+  @Test//(enabled = false)
   public void deleteFirstGroup(){
     Set<GroupData> before = app.group().getSetOfGroups();
     GroupData deletedGroup = before.iterator().next();    //получил ИД группы на удаление рандомно
