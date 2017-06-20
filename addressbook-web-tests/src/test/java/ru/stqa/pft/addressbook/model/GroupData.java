@@ -25,8 +25,8 @@ public class GroupData {
         this.name = name;
         this.header = header;
         this.footer = footer;
-    }public GroupData(){}
-
+    }
+    public GroupData(){}
 
     public int          getId()               { return id;
     }
@@ -46,8 +46,10 @@ public class GroupData {
 
     @Override
     public String toString() {
-        return "GroupData{" + "id='" + id + '\'' + ", name='" + name + '\'' + '}';
+        return "GroupData{" + "id='" + id +
+                '\'' + ", name='" + name + '\'' + '}';
     }
+
 
     @Override
     public boolean equals(Object o) {

@@ -1,12 +1,15 @@
-package ru.stqa.pft.addressbook.tests;
+package ru.stqa.pft.addressbook.tests.groupsTests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.tests.TestBase;
 
 import java.util.List;
 import java.util.Set;
+
+import static ru.stqa.pft.addressbook.tests.TestBase.app;
 
 /**
  * Created by Артем on 26.03.2017.

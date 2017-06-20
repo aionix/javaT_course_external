@@ -30,9 +30,12 @@ public class smth {
   }
 
   public void getProp() throws IOException {
-    String target = System.getProperty("target", "remote");
+ //   String target = System.getProperty("x", "remote");
     System.out.println("Absolute is --- " + new File(".").getAbsolutePath());
-    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+/*    Properties temp = System.getProperties();
+    temp.list(System.out);*/
+ //   properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+    properties.load(new FileReader(new File(String.format("src/test/resources/remote.properties"))));
     String  pro = properties.getProperty("web.baseURL");
     System.out.println(pro);
   }

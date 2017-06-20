@@ -66,8 +66,8 @@ public class GroupHelper extends HelperBase {
     public Set<GroupData> getSetOfGroups() {
        /* if (groupCache != null){
             return new Groups(groupCache);
-        }
-        groupCache  = new HashSet<>();*/
+        }groupCache  = new HashSet<>();*/
+
         Set<GroupData> groups = new HashSet<>();
         List<WebElement> elements = wd.findElements(By.className("group"));
         for (int i = 0; i < elements.size(); i++) {
@@ -127,8 +127,7 @@ public class GroupHelper extends HelperBase {
         for(GroupData g : list){
             if (g.getId() > max){
                 max = g.getId();
-            }}
-        return max;
+            }} return max;
     }
 
     public void deleteById(GroupData group) {

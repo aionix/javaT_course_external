@@ -3,7 +3,7 @@
 <suite name="Suite2" verbose="1" >
     <test name="Groupsdel" >
         <classes>
-            <class name="ru.stqa.pft.addressbook.tests.GroupDeletionTests" />
+            <class name="ru.stqa.pft.addressbook.tests.groupsTests.GroupDeletionTests" />
         </classes>
     </test>
 </suite>
