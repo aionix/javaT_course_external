@@ -7,6 +7,7 @@
         <hibernate-configuration>
 
     <session-factory>
+
     <!-- Database connection settings -->
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <property name="connection.url">jdbc:mysql://localhost:3306/addressbook</property>
@@ -24,6 +25,7 @@
     <property name="hbm2ddl.auto">validate</property>
     <!-- Names the annotated entity class -->
     <mapping class="ru.stqa.pft.addressbook.model.GroupData"/>
+        <mapping class="ru.stqa.pft.addressbook.model.ContactData"/>
 </session-factory>
 
 </hibernate-configuration>

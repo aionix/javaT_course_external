@@ -1,17 +1,35 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
 
 /**
  * Created by Артем on 26.03.2017.
  */
+
+@javax.persistence.Entity
+@javax.persistence.Table(name = "group_list")
+
 public class GroupData {
+    @Id
+    @Column(name = "group_id")
     private int id;
+
     @Expose
+    @Column(name = "group_name")
     private  String name;
+
     @Expose
+    @Column(name = "group_header")
+    @Type(type = "text")
     private  String header;
+
     @Expose
+    @Column(name = "group_footer")
+    @Type(type = "text")
     private  String footer;
 
     public GroupData(int id, String name, String header, String footer) {
@@ -37,11 +55,13 @@ public class GroupData {
     public GroupData    setName(String name)  { this.name = name; return this;
     }
 
-    public String getHeader() {
-        return header;
+    public String getHeader()                 { return header;
     }
-    public String getFooter() {
-        return footer;
+    public GroupData    setHeader(String header) { this.header = header; return this;
+    }
+    public String       getFooter()            { return footer;
+    }
+    public GroupData    setFooter(String footer)   {this.footer = footer; return  this;
     }
 
     @Override
